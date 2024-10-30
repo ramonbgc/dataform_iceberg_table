@@ -1,0 +1,28 @@
+config { 
+  type: "operations",
+  hasOutput: true,
+  tags: ["enriched", "enriched_init"]
+}
+
+-- Create an ICEBERG table
+CREATE TABLE IF NOT EXISTS `rideshare_lakehouse_enriched.biglake_rideshare_trip_iceberg_native`
+(
+rideshare_trip_id STRING,
+pickup_location_id INT64,
+pickup_datetime TIMESTAMP,
+dropoff_location_id INT64,
+dropoff_datetime TIMESTAMP,
+ride_distance FLOAT64,
+is_airport BOOL,
+payment_type_id INT64,
+fare_amount FLOAT64,
+tip_amount FLOAT64,
+taxes_amount FLOAT64,
+total_amount FLOAT64,
+partition_date DATE
+)
+WITH CONNECTION `ramongc-477-20240923141826.us.biglake-connection`
+OPTIONS (
+  file_format = 'PARQUET',
+  table_format = 'ICEBERG',
+  storage_uri = 'gs://rideshare-lakehouse-enriched-m49gb51fed/native_iceberg/');

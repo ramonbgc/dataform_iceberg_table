@@ -1,0 +1,8 @@
+config { 
+  type: "incremental",
+  dependencies: ["biglake_rideshare_trip_iceberg"],
+  tags: ["enriched", "enriched_transform"]
+}
+
+select *
+from ${ref("biglake_rideshare_trip_parquet")}

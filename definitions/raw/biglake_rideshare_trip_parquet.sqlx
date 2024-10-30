@@ -1,0 +1,13 @@
+config { 
+  type: "operations",
+  hasOutput: true,
+  tags: ["raw"]
+}
+
+
+CREATE EXTERNAL TABLE IF NOT EXISTS ${self()}
+WITH CONNECTION `ramongc-477-20240923141826.us.biglake-connection`
+OPTIONS (
+    format = "PARQUET",
+    uris = ['gs://rideshare-lakehouse-raw-m49gb51fed/rideshare_trip/parquet/*.parquet']
+);

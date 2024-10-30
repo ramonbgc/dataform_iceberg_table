@@ -1,0 +1,5 @@
+defaultProject: ramongc-477-20240923141826
+defaultLocation: US
+defaultDataset: rideshare_lakehouse_raw
+defaultAssertionDataset: dataform_assertions
+dataformCoreVersion: 3.0.0
